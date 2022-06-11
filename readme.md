@@ -16,7 +16,7 @@ ___
 
 
 **Notes:**
-
+____
     This is my solution for the Simple Stock Market Project. Added an API built with FastAPI and a Uvicorn server to be able to interact
     with the stock market. Given the time constraints and the scope, the stocks are input using a CSV File. Also, cause we aren't
     initializing with previous stock information, trades will need to be entered to properly calculate VWAP for stocks (since pricing data is required)
@@ -36,7 +36,7 @@ ___
 
 **How to Setup:**
 ____
-    Download packge
+    Download package
     Set up a virtual environment if you prefer:
     https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
     
@@ -104,6 +104,7 @@ ___
 
 
 **Main Classes:**
+___
 
     - StockMarket
     - Stocks
