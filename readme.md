@@ -1,6 +1,6 @@
-### **Super Simple Stock Market** 
+## **Super Simple Stock Market** 
 
-**Requirements**
+### **Requirements**
 ___
     1. The Global Beverage Corporation Exchange is a new stock market trading in drinks companies.
         a. Your company is building the object-oriented system to run that trading.
@@ -13,16 +13,12 @@ ___
             iv. Calculate Volume Weighted Stock Price based on trades in past 5 minutes
         b. Calculate the GBCE All
 
-
-
-**Notes:**
+### **Notes:**
 ____
     This is my solution for the Simple Stock Market Project. Added an API built with FastAPI and a Uvicorn server to be able to interact
     with the stock market. Given the time constraints and the scope, the stocks are input using a CSV File. Also, cause we aren't
-    initializing with previous stock information, trades will need to be entered to properly calculate VWAP for stocks (since pricing data is required)
-    Given the time constraint, I am making an assumption that any data received would already be sanitized. In a real production
-    environment, I would add more input validations.
-    
+    initializing with previous stock information, trades will need to be entered to properly calculate VWAP/INDEX for stocks (since pricing data is required)
+ 
     Potential Future Enhancements:
     * Updating pricing information with background workers (Celery)
     * Improved Testing, especiallly for the API, didn't add API testing as not in scope
@@ -32,9 +28,8 @@ ____
     * Adding success and response codes
     * Adding more class methods
     * Improved API Functionality (Add/Remove Stock, Update Stock Information, Get Stock Data)
-    
 
-**How to Setup:**
+### **How to Set Up:**
 ____
     Download package
     Set up a virtual environment if you prefer:
@@ -44,14 +39,22 @@ ____
     
     Run Server: uvicorn main:app
 
-    
+### **Coverage**:
 
-**Testing:**
+    To run coverage:
+    coverage run -m SuperSimpleStockTests
+
+    To get report:
+    coverage report -m
+
+![](images/coverage.png)
+
+### **Testing:**
 ____
     Due to size of project, I decided to keep tests in one file. I would break out and have more testing in an actual project
     python3 -m unittest SuperSimpleStockTests
 
-**API Endpoints:**
+### **API Endpoints:**
 ___
     GET /index/
     
@@ -82,7 +85,7 @@ ___
     Returns P.E Ratio for specified stock. Returns NAN if not available
 
 
-    POST /trade
+    POST /trade/
     
     Ex. http://127.0.0.1:8000/trade/?ticker=JOE&order_type=sell&quantity=100&price=500
     PARAMS = ticker, order_type (buy/sell), quantity, price
@@ -91,26 +94,24 @@ ___
 
 ![](images/trade.png)
 
-
 ![](images/vwap.png)
 
-
 ![](images/per.png) 
-
 
 ![](images/divyield.png)
 
 ![](images/index.png)
 
 
-**Main Classes:**
+### **Main Classes:**
 ___
 
+    - API Routes
     - StockMarket
     - Stocks
     - StockEnum
     - Stock
-    - Stock Pricing - Made design decision to separate out the pricing information into own class 
+    - StockPricing - Made design decision to separate out the pricing information into own class 
     - StockFactory
     - CommonStock
     - PreferredStock
@@ -119,3 +120,14 @@ ___
     a separate database 
 
 
+### **Example**:
+
+    import StockMarket
+
+    market = StockMarket.StockMarket("GBCE")
+    market.stocks.loadStockDataFromCSV("<Path to CSV>")
+    market.trade("TKR", "BUY", 100, 100)
+    market.getIndex()
+    market.stocks.getStockPER("TKR", 100)
+    market.stocks.getStockDividendYield("TKR", 100)
+    market.stocks.getStockVWAP("TKR")

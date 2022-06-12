@@ -31,6 +31,9 @@ class Stocks:
 
         ticker = trade.ticker
 
+        if not isinstance(trade.price, (int, float,)) or trade.price < 0:
+            return -1
+
         if ticker not in self.stock_data.keys():
             return -1
 
@@ -46,12 +49,20 @@ class Stocks:
         return self.stock_pricing[ticker].getVWAP()
 
     def getStockDividendYield(self, ticker, price):
+
+        if not isinstance(price, (int, float,)) or price < 0:
+            return -1
+
         if ticker not in self.stock_data.keys():
             return -1
 
         return self.stock_data[ticker].getDividendYield(price)
 
     def getStockPER(self, ticker, price):
+
+        if not isinstance(price, (int, float,)) or price < 0:
+            return -1
+
         if ticker not in self.stock_data.keys():
             return -1
 
@@ -101,6 +112,6 @@ class StockPricing:
         else:
             self.vwap_5_min = float(self.cumulative_price_volume / self.cumulative_quantity)
 
-
-
         self.lastUpdate = datetime.now()
+
+        return 0
