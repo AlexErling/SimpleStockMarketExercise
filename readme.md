@@ -3,15 +3,23 @@
 ### **Requirements**
 ___
 1. The Global Beverage Corporation Exchange is a new stock market trading in drinks companies.
+
     a. Your company is building the object-oriented system to run that trading.
+
     b. You have been assigned to build part of the core object model for a limited phase 1
+
+
 2. Provide the complete source code that will:-
-    a. For a given stock,
+
+    a. For a given stock:
+
         i. Given any price as input, calculate the dividend yield
         ii. Given any price as input, calculate the P/E Ratio
         iii. Record a trade, with timestamp, quantity, buy or sell indicator and price
         iv. Calculate Volume Weighted Stock Price based on trades in past 5 minutes
-    b. Calculate the GBCE All
+
+    b. Calculate the GBCE All Share Index using the geometric mean of the Volume Weighted Stock Price for all
+stocks
 
 ### **Notes:**
 ____
@@ -21,9 +29,9 @@ initializing with previous stock information, trades will need to be entered to 
 
 Potential Future Enhancements:
 * Updating pricing information with background workers (Celery)
-* Improved Testing, especiallly for the API, didn't add API testing as not in scope
+* Improved Testing
 * Creating a logging micro service
-* Adding imprvoed I/O - Storing the trade history in a database 
+* Adding improved I/O - Storing the trade history in a database 
 * Adding more input validation
 * Adding success and response codes
 * Adding more class methods
