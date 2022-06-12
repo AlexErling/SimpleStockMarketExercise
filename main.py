@@ -1,6 +1,6 @@
 import StockMarket
 import fastapi
-from api import APIRoutes
+from Api import APIRoutes
 import logging
 
 if __name__ == "main":
